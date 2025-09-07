@@ -1,39 +1,40 @@
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+
 
 int main() {
-	int a=30;
-    while(1){
-    	for(int i=0;i<=a;i++){
-    		for(int j=0;j<=i;j++){
-    			cout<<" ";
-			}
-			cout<<"a";
-			for(int j=i;j<=a;j++){
-    			cout<<" ";
-			}
-			system("cls");
-		}
-		
-		for(int i=0;i<=a;i++){
-    		for(int j=i;j<=a;j++){
-    			cout<<" ";
-			}
-			cout<<"a";
-			for(int j=0;j<=i;j++){
-    			cout<<" ";
-			}
-			system("cls");
-		}
-		
-	}
-    
-    
-    
-    
-    
-    
 
-    return 0;
-    
+	int a=120;
+	while(1){
+		for(int i=0;i<=a;i++){
+			for(int j=0;j<=i;j++){
+				printf(" ");
+			}
+			printf("a");
+			for(int j=i;j<=a;j++){
+				printf(" ");
+			}
+			system("cls");
+		}
+
+		for(int i=0;i<=a;i++){
+			for(int j=i;j<=a;j++){
+				printf(" ");
+			}
+			printf("a");
+			for(int j=0;j<=i;j++){
+				printf(" ");
+			}
+			system("cls");
+		}
+
+	}
+
+
+
+
+
+
+
+	return 0;
+
 }
