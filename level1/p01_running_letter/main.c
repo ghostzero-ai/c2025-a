@@ -2,7 +2,9 @@
 
 
 int main() {
-
+	int cs=0;
+	cs=666;
+	printf("%d",cs);
 	int a=120;
 	while(1){
 		for(int i=0;i<=a;i++){
