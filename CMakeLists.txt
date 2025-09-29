@@ -18,10 +18,10 @@ add_executable(p05_encrypt_decrypt  level1/p05_encrypt_decrypt/main.c)
 
 add_executable(p06_hanoi  level1/p06_hanoi/main.c)
 
-add_executable(p07_maze  level1/p07_maze/main.c)
+add_executable(p07_maze level1/p07_maze/main.cpp)
 
-add_executable(p08_push_boxes  level1/p08_push_boxes/main.c)
+add_executable(p08_push_boxes level1/p08_push_boxes/main.cpp)
 
-add_executable(p09_linked_list  level1/p09_linked_list/main.c)
+add_executable(p09_linked_list level1/p09_linked_list/main.cpp)
 
-add_executable(p10_warehouse  level1/p10_warehouse/main.c)
+add_executable(p10_warehouse level1/p10_warehouse/main.cpp)
