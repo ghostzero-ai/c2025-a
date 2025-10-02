@@ -1,9 +1,10 @@
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <windows.h>
 
 int main() {
 
-	printf("%d",cs);
+
 	int a=120;
 	while(1){
 		for(int i=0;i<=a;i++){

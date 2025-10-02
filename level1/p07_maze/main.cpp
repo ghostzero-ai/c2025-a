@@ -39,7 +39,7 @@ struct person {
 
 void sxmap() {
     system("cls");
-    if (player.x==LONG-1&&player.y==LONG-1) {
+    if (player.y==LONG-1&&player.x==LONG-1) {
         flag=1;
         return;
     }
@@ -106,49 +106,49 @@ void csmap() {
     //创造随机地图
     create_map(1,1);
 
-    player.x=player.y=1;
-    MAP[player.y][player.x]=GAMEPLAYER;
+    player.y=player.x=1;
+    MAP[player.x][player.y]=GAMEPLAYER;
 
     sxmap();
 }
 
 //上下左右操控
 void RIGHT() {
-    if (MAP[player.x][player.y+1]!=WALL) {
+    if (MAP[player.y][player.x+1]!=WALL) {
 
-        MAP[player.x][player.y]=PATH;
-        MAP[player.x][player.y+1]=GAMEPLAYER;
-        player.y++;
-    }
-    sxmap();
-}
-
-void LEFT() {
-    if (MAP[player.x][player.y-1]!=WALL) {
-
-        MAP[player.x][player.y]=PATH;
-        MAP[player.x][player.y-1]=GAMEPLAYER;
-        player.y--;
-    }
-    sxmap();
-}
-
-void DOWN() {
-    if (MAP[player.x+1][player.y]!=WALL) {
-
-        MAP[player.x][player.y]=PATH;
-        MAP[player.x+1][player.y]=GAMEPLAYER;
+        MAP[player.y][player.x]=PATH;
+        MAP[player.y][player.x+1]=GAMEPLAYER;
         player.x++;
     }
     sxmap();
 }
 
-void UP() {
-    if (MAP[player.x-1][player.y]!=WALL) {
+void LEFT() {
+    if (MAP[player.y][player.x-1]!=WALL) {
 
-        MAP[player.x][player.y]=PATH;
-        MAP[player.x-1][player.y]=GAMEPLAYER;
+        MAP[player.y][player.x]=PATH;
+        MAP[player.y][player.x-1]=GAMEPLAYER;
         player.x--;
+    }
+    sxmap();
+}
+
+void DOWN() {
+    if (MAP[player.y+1][player.x]!=WALL) {
+
+        MAP[player.y][player.x]=PATH;
+        MAP[player.y+1][player.x]=GAMEPLAYER;
+        player.y++;
+    }
+    sxmap();
+}
+
+void UP() {
+    if (MAP[player.y-1][player.x]!=WALL) {
+
+        MAP[player.y][player.x]=PATH;
+        MAP[player.y-1][player.x]=GAMEPLAYER;
+        player.y--;
     }
     sxmap();
 }
@@ -159,7 +159,7 @@ int main() {
     //srand(time(0));
     srand((unsigned int)time(NULL));
     csmap();//产生地图
-
+    //持续移动直到结束
     while(1) {
         if (flag==1) {
             system("cls");

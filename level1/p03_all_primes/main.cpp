@@ -6,6 +6,7 @@ int main() {
     for (int i=2;i<=1000;i++) {
         su[i]=0;
     }
+    //筛法
     for (int i=2;i<=1000;i++) {
         for (int j=2;i*j<=1000;j++) {
             su[i*j]=1;

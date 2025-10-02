@@ -6,11 +6,13 @@ int main() {
     for (int i=2;i<=100;i++) {
         su[i]=0;
     }
+    //筛法
     for (int i=2;i<=100;i++) {
         for (int j=2;i*j<=100;j++) {
             su[i*j]=1;
         }
     }
+    //遍历质数
     for (int i=4;i<=100;i+=2) {
         flag=1;
         for (int j=2;j*2<=i;j++) {
