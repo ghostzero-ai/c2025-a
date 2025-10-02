@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+string am(string md);
+string jm(string md);
 //加密
 string am(string md) {
     int len = md.length();

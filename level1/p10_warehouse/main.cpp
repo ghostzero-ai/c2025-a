@@ -4,12 +4,15 @@ using namespace std;
 void show();
 void add();
 void ex();
-void reserve();
+void reserve(string filename);
 void read(string filename);
+void removing(int t);
+//定义所需输入的结构体
 struct goods {
     string name;
     string type_number;
     int number;
+    //初始化
     goods(string n, string t, int num) {
         name = n;
         type_number = t;
@@ -18,10 +21,10 @@ struct goods {
 };
 
 vector<goods> store;
-int COUNT;
+int COUNT;//尾标
 
 
-
+//显示存货列表
 void show() {
     //system("cls");
     for (int i=0;i<COUNT;i++) {
@@ -29,6 +32,7 @@ void show() {
     }
 }
 
+//入库
 void add() {
     cout<<"请输入入库货物的名字，型号，数量";
     int flag=0;
@@ -40,7 +44,7 @@ void add() {
             flag=1;
             store[i].number+=number;
             break;
-        }else if (name==store[i].name||type_number>store[i].type_number) {
+        }else if (name==store[i].name||type_number==store[i].type_number) {
             cout<<"检测到出现相同型号或相同名称，请问是否坚持输入\n坚持输入按1，重新输入按2";
             int jc;
             cin>>jc;
@@ -63,7 +67,10 @@ void add() {
     }
 
 }
+
+//出库
 void ex() {
+
     cout<<"请输入出库货物的名字,型号，数量";
     string name,type_number;
     int number;
@@ -72,21 +79,27 @@ void ex() {
         if (name==store[i].name&&type_number==store[i].type_number) {
             if (store[i].number>=number) {
                 store[i].number-=number;
+                if (store[i].number==0) {
+                    removing(i);
+                }
             }else {
                 cout<<"出货错误，货物数量不足，无法实现，请重新输入\n";
                 ex();
             }
 
-            break;
+            return;
         }
     }
+    cout<<"出货错误，名称或型号不对，无法实现，请重新输入\n";
+    ex();
 }
 
+//操作完后保存到文件
 void reserve(string filename) {
     ofstream outFile(filename);
     if (!outFile.is_open()) {
         cerr<<"无法找到文件："<<filename<<endl;
-        Sleep(100000);
+
         exit(1);
         //杀进程
     }
@@ -95,16 +108,17 @@ void reserve(string filename) {
     }
 }
 
+//读取文本
 void read(string filename) {
     COUNT=0;
-    ifstream file(filename);
+    ifstream file(filename);//读取文件
     if (!file.is_open()) {
         cerr<<"无法打开文件："<<filename<<endl;
-        Sleep(100000);
         exit(1);
         //杀进程
     }
     string line;
+    //按行读取
     while (getline(file, line)) {
         int firstspace = line.find(' ');
         int secondspace = line.find(' ',firstspace+1);
@@ -118,6 +132,17 @@ void read(string filename) {
         COUNT++;
     }
 
+}
+//去除数量为0项
+void removing(int t) {
+    for (int i=t;i<COUNT;i++) {
+        if (i!=COUNT-1) {
+            store[i]=store[i+1];
+        }else {
+            store.pop_back();
+            COUNT--;
+        }
+    }
 }
 
 int main() {
@@ -144,12 +169,12 @@ int main() {
 
             case 2:
                 add();
-
+                reserve("goods.txt");
                 break;
 
             case 3:
                 ex();
-
+                reserve("goods.txt");
                 break;
 
             case 4:

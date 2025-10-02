@@ -6,6 +6,15 @@ struct node {
     //node *last;
 }head,hail;
 
+node* l(node *dq);
+node* cl(node *dq);
+int find(int number,int xh,node *dq);
+int find_two(int number,int xh,node *dq,int flag);
+void pt(node dq);
+
+
+
+//查找末节点的前一个节点
 node* l(node *dq) {
 
     if (dq->next->next==NULL) {
@@ -17,6 +26,7 @@ node* l(node *dq) {
     }
 }
 
+//将箭头倒序
 node* cl(node *dq) {
     if (dq->next->next==NULL) {
         dq->next->next=dq;
@@ -29,6 +39,7 @@ node* cl(node *dq) {
 
 }
 
+//顺节点查找
 int find(int number,int xh,node *dq) {
     if (dq->next==NULL) {
         return -1;
@@ -40,6 +51,7 @@ int find(int number,int xh,node *dq) {
     }
 }
 
+//顺节点查找第二次出现的
 int find_two(int number,int xh,node *dq,int flag) {
     if (dq->next==NULL) {
         return -1;
@@ -62,42 +74,43 @@ void pt(node dq) {
         return;
     }
     cout << dq.data << endl;
-    pt(*dq.next);
+    pt(*dq.next);//顺着链表查找
 }
 
 int main() {
     int n;
+    cout<<"请输入要创造链表的长度";
     cin >> n;
-    //head.last = NULL;
+    system("cls");
     head.next = &hail;
     hail.next = NULL;
-    //hail.last = NULL;
-
+    cout<<"请输入要创造的链表";
+    //创建并输入一个链表
     for (int i = 0; i < n; i++) {
         node* p = (node*)malloc(sizeof(node) * 4);
         cin >> p->data;
         p->next = &hail;
         l(&head)->next=p;
 
-
-
-
     }
-    int gn;
+    system("cls");
+    int gn;//功能
+    cout<<"请输入要实现的功能";
     cin >> gn;
+    system("cls");
     switch (gn) {
-        case 1:
+        case 1://遍历该链表，依次现实各节点的 value
             pt(*head.next);
             break;
-        case 2:
+        case 2://将该链表所有节点反序
             cl(&head);
             head.next=NULL;
             pt(*hail.next);
             break;
-        case 3:
+        case 3://在该链表中查找第一个值为 5 的节点，如果找到则返回该节点的序号，否则返回－1
             cout<<find(5,0,&head);
             break;
-        case 4:
+        case 4://查找下一个值为 5 的节点，返回值同上
             cout<<find_two(5,0,&head,0);
     }
     return 0;

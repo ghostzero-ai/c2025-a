@@ -36,7 +36,7 @@ struct person {
 }player;
 
 
-
+//打印地图
 void sxmap() {
     system("cls");
     if (player.y==LONG-1&&player.x==LONG-1) {
@@ -97,7 +97,7 @@ void create_map(int x,int y) {
 void csmap() {
     cout<<"!为玩家，E为出口\n";
     Sleep(500);
-
+    //初始化
     for(int i=0;i<=LONG+1;i++) {
         for(int j=0;j<=LONG+1;j++) {
             MAP[i][j]=WALL;
