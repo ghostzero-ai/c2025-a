@@ -1,6 +1,7 @@
+## 项目地址:https://github.com/ghostzero-ai/chess_ai
+
 ## 实验题目：五子棋AI
 
-## 五子棋代码库:https://github.com/ghostzero-ai/chess_ai
 
 ## GUI
 - [raylib](https://github.com/raysan5/raylib)
